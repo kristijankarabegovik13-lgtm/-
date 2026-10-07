@@ -4,6 +4,8 @@ const seal = document.getElementById('seal');
 const replay = document.getElementById('replay');
 const petalLayer = document.getElementById('petalLayer');
 const card = document.getElementById('card');
+const weddingMusic = document.getElementById('weddingMusic');
+const musicToggle = document.getElementById('musicToggle');
 
 const petals = [];
 const N = 62;
@@ -60,6 +62,19 @@ function burstThenHeart(){
 function openInvitation(){
   if(scene.classList.contains('open')) return;
   scene.classList.add('open');
+
+  weddingMusic.currentTime = 0;
+  weddingMusic.volume = 0.75;
+  weddingMusic.muted = false;
+  weddingMusic.play().then(()=>{
+    musicToggle.hidden = false;
+    musicToggle.textContent = '🔊';
+    musicToggle.setAttribute('aria-label','Исклучи музика');
+  }).catch(()=>{
+    musicToggle.hidden = false;
+    musicToggle.textContent = '▶';
+    musicToggle.setAttribute('aria-label','Пушти музика');
+  });
   card.setAttribute('aria-hidden','false');
   setTimeout(burstThenHeart,1250);
   setTimeout(()=>{replay.hidden=false;},2800);
@@ -67,6 +82,9 @@ function openInvitation(){
 
 function resetInvitation(){
   replay.hidden=true;
+  musicToggle.hidden=true;
+  weddingMusic.pause();
+  weddingMusic.currentTime=0;
   scene.classList.remove('open');
   card.setAttribute('aria-hidden','true');
   petals.forEach(p=>p.style.transitionDelay='0s');
@@ -75,5 +93,17 @@ function resetInvitation(){
 
 seal.addEventListener('click',openInvitation);
 replay.addEventListener('click',resetInvitation);
+musicToggle.addEventListener('click',()=>{
+  if(weddingMusic.paused){
+    weddingMusic.play();
+    weddingMusic.muted=false;
+    musicToggle.textContent='🔊';
+    musicToggle.setAttribute('aria-label','Исклучи музика');
+  } else {
+    weddingMusic.muted=!weddingMusic.muted;
+    musicToggle.textContent=weddingMusic.muted?'🔇':'🔊';
+    musicToggle.setAttribute('aria-label',weddingMusic.muted?'Вклучи музика':'Исклучи музика');
+  }
+});
 seal.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' ') openInvitation();});
 scatterPetals();

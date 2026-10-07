@@ -32,7 +32,7 @@
 
           <div class="event-details">
             <p class="date">09.04.2027</p>
-            <p class="time">18:30</p>
+            <p class="time">18:30 h</p>
             <p class="place">Ресторан Бисер</p>
           </div>
 
@@ -48,7 +48,11 @@
     </section>
 
     <p class="hint" id="hint">Допрете го печатот за да ја отворите поканата</p>
+    <button class="music-toggle" id="musicToggle" type="button" aria-label="Исклучи музика" title="Музика" hidden>🔊</button>
     <button class="replay" id="replay" type="button" hidden>Повтори</button>
+    <audio id="weddingMusic" preload="auto">
+      <source src="wedding-march.mp3" type="audio/mpeg">
+    </audio>
   </main>
   <script src="script.js"></script>
 </body>
