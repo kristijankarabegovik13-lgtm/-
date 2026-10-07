@@ -1,10 +1,8 @@
-# Свадбена покана — Мирослав & Марија
+# Свадбена покана — Мирослав & Марија (мобилно оптимизирана)
 
-Статичка покана за GitHub Pages.
+Оваа верзија е оптимизирана за мобилни телефони, вклучувајќи помали екрани и safe-area на iPhone.
 
-- Датум: 09.04.2027
-- Време: 18:30 h
-- Локација: Ресторан Бисер
-- Музика: Mendelssohn — Wedding March (се пушта по допир на печатот)
-
-За GitHub Pages upload-ирај ги `index.html`, `style.css`, `script.js` и `wedding-march.mp3` директно во root на repository-то.
+GitHub Pages:
+1. Upload-ирај ги сите фајлови во root на repository.
+2. `index.html` мора да биде директно во root.
+3. Settings → Pages → Deploy from branch → `main` / `(root)`.
